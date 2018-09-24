@@ -1,0 +1,51 @@
+body {      
+    background-image: url(../Resources/back.jpg);
+    background-size: 1540px 750px;    
+    width: auto;
+    height: auto;
+    margin: 70px;
+}
+
+#register_div {
+    margin: auto;
+    width:500px;
+    height: 500px;
+    padding: 40px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+img {
+    width: 150px;
+    height: 40px;
+    float: right;
+}
+
+#register_form {
+    margin: auto;
+    width: 400px;
+}
+
+label:nth-child(2n) {
+    float: right;
+    margin-right: 130px;
+}
+
+#submit {
+    margin-left: 70px;
+    margin-right: 70px;
+    margin-bottom: 16px;
+    height: 30px;
+    width: 65px;
+    border-radius: 6px;
+    background-color: #2983D9;
+    color: #ffffff;
+    border-color: #ffffff;
+    cursor: pointer;
+}
+
+input {
+      border-radius: 5px;
+      height: 24px;
+      width: 180px;
+}
