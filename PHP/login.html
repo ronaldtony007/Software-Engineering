@@ -7,16 +7,63 @@
         <title>Welcome to NIC WI-FI</title>
     </head>
 <body>
-    <div>
-        <form action="#" method="post">
-            <img src="../Resources/NIC-logo.png" alt="NIC LOGO">
-            <div id="error"><p>Username or password is incorrect.</p></div>
-            <input id="user" type="text" placeholder="Username" name="user"><br>
-            <input id="pass" type="password" placeholder="Password" name="pass"><br>
-            <input id="submit" type="submit" value="Submit"><br>
-            <a href="#">Forgot Password?</a>
-            <a href="register.php">Register</a>    
+    <header>
+        <label id="inoc">iNOC</label>
+        <img id="logo2" src="../Resources/DigitalIndia-logo.png" alt="DigitalIndia-logo">
+        <img id="logo1" src="../Resources/NIC-logo2.png" alt="NIC-logo">
+        <img id="logotext" src="../Resources/NIC-txt.png" alt="NIC-logotxt">
+    </header>
+    <hr>
+    <div id="main">
+        <div id="login1">
+            <h2>Register</h2>
+            <form action="#" method="post">
+                <h4>Personal Details:</h4>
+                <label>Full Name: </label>
+                <input type="text" name="fname" required>&nbsp&nbsp&nbsp&nbsp
+                <label>Designation: </label>
+                <input type="text" name="designation" required>&nbsp&nbsp&nbsp&nbsp
+                <label>Employee Code: </label>
+                <input type="text" name="empcode" required><br><br>
+                <label>Mobile Number: </label>
+                <input type="text" name="mobileno" required>&nbsp&nbsp&nbsp&nbsp
+                <label>Email Address: </label>
+                <input type="email" name="email" required><br><br>
+                <label>Division/Group (For NIC Employees): </label>
+                <input type="text" name="nic_div">&nbsp&nbsp&nbsp&nbsp
+                <label>Location: </label>
+                <input type="text" name="nic_loc"><br><br>
+                <label>Department/Ministry (For non-NIC Officials: </label>
+                <input type="text" name="nonic_dept"><br><br>
+                <h4>User Category:</h4>
+                <input type="checkbox" name="cat" value="NIC">NIC Employee&nbsp
+                <input type="checkbox" name="cat" value="civilservice">Hon'ble Ministers/Civil Services Officers&nbsp
+                <input type="checkbox" name="cat" value="ministry">Ministry Officers&nbsp
+                <input type="checkbox" name="cat" value="fms">FMS Staff&nbsp
+                <input type="checkbox" name="cat" value="trainee">Trainee<br><br>
+                <label>Other: </label>    
+                <input type=text name="cat"><br><br><br>
             </form>
+            <input type="checkbox" name="declaration">I have accepted the terms and conditions.
+        </div>
+        <hr id="divider">
+        <div id="login2">
+            <h3>Already registered? Sign in</h3>
+            <form action="#" method="post">
+                <input id="user" type="text" name="user" placeholder="Username"><br>
+                <input id="pass" type="password" name="pass" placeholder="password"><br>
+                <input id="submit" type="submit" value="Login"><br> 
+            </form>    
+            <a href="#">Forgot password?</a>
+        </div>
     </div>
+    <hr>
+    <footer>
+        <a href="#">About Us</a>&nbsp&nbsp&nbsp&nbsp
+        <a href="#">Services</a>&nbsp&nbsp&nbsp&nbsp
+        <a href="#">Contact Us</a><br>
+        <p>&copy Copyright This site is designed, developed, hosted and maintained by National Informatics Centre,<br>
+        Ministry of Electronics & Information Technology, Government of India.</p>
+    </footer>
 </body>
 </html>
