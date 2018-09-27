@@ -80,10 +80,17 @@ hr {
 
 #login1 form input[type=text] {
     border-radius: 5px;
+    width: 100.8px;
 }
 
 #login1 form input[type=email] {
     border-radius: 5px;
+    width: 100.8px;
+}
+
+#login1 form input[type=password] {
+    border-radius: 5px;
+    width: 100.8px;
 }
 
 #login2 {
