@@ -68,12 +68,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	if (!mysqli_query($conn, $sql)) {
 		closeConnection($conn);
 		echo "<script>alert(\"Registration failed: ".mysqli_error($conn)."\");</script>";
-		echo "<script>setTimeout(\"location.href = 'login.html';\",20);</script>";
+		echo "<script>setTimeout(\"location.href = 'login.html'\",20);</script>";
 	}
 	else {
 		closeConnection($conn);
 		echo "<script>alert(\"Successfully Registered.\");</script>";
-		echo "<script>setTimeout(\"location.href = 'login.html';\",20);</script>";
+		echo "<script>setTimeout(\"location.href = 'login.html'\",20);</script>";
 	}
 }
 else {
