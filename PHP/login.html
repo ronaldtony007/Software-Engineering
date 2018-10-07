@@ -82,9 +82,7 @@
         if (name != "" && designation != "" && empcode != "" && mobileno != "" && email != "" && user != "" && 
             pass1 != "" && pass2 != "") {
             if (v1 || v2 || v3 || v4 || v5 || v6 != "") {
-                if (v7) 
-                    alert("Successfully Registered");
-                else
+                if (!v7) 
                     alert("Please agree to Terms and Conditions");
             }    
             else {
@@ -127,7 +125,7 @@
     <div id="main">
         <div id="login1">
             <h2>Register</h2>
-            <form action="#" method="post">
+            <form action="PHP/connection.php" method="post">
                 <h4>Personal Details:</h4>
                 <label>Full Name: </label>
                 <input type="text" id="fname" name="fname" onkeypress="return ischar()" required id="fname">&nbsp&nbsp&nbsp&nbsp
