@@ -1,13 +1,21 @@
 <?php 
 include 'connection.php';
 
-$conn = openConnection();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-if ($conn) {
-	echo "Connected Successfully.<br>";
+	$conn = openConnection();
+
+	if ($conn) {
+		echo "Connected Successfully.<br>";
+	}
+
+	echo "Closing connection.";
+
+	closeConnection($conn);
+}
+else {
+	header("Location: login.html", true, 301);
+	exit();
 }
 
-echo "Closing connection.";
-
-closeConnection($conn);
 ?>
