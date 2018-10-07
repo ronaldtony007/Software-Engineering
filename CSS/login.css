@@ -80,16 +80,19 @@ hr {
 
 #login1 form input[type=text] {
     border-radius: 5px;
+    padding-left: 5px;
     width: 100.8px;
 }
 
 #login1 form input[type=email] {
     border-radius: 5px;
+    padding-left: 5px;
     width: 100.8px;
 }
 
 #login1 form input[type=password] {
     border-radius: 5px;
+    padding-left: 5px;
     width: 100.8px;
 }
 
@@ -147,7 +150,24 @@ hr {
     padding-left: 10px;
 }
 
-#Submit {
+#Submit1 {
+    margin-left: 121px;
+    margin-right: 121px;
+    margin-bottom: 16px;
+    height: 30px;
+    width: 65px;
+    border-radius: 6px;
+    background-color: #2983D9;
+    color: #ffffff;
+    border-color: #ffffff;
+    cursor: pointer;
+}
+
+#Submit1[disabled] {
+    background-color: #7F8387;
+}
+
+#Submit2 {
     margin-left: 121px;
     margin-right: 121px;
     margin-bottom: 16px;

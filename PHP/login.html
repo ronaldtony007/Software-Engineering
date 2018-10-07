@@ -82,8 +82,9 @@
         if (name != "" && designation != "" && empcode != "" && mobileno != "" && email != "" && user != "" && 
             pass1 != "" && pass2 != "") {
             if (v1 || v2 || v3 || v4 || v5 || v6 != "") {
-                if (!v7) 
+                if (!v7) {
                     alert("Please agree to Terms and Conditions");
+                }
             }    
             else {
                 alert("Please select User Category");
@@ -110,6 +111,9 @@
             alert("I hereby declare that:\n1. The information provided is correct.\n2. Will not indulge in any activity and no attempt will be made to gain\ unauthorized access to other NIC websites and facilities.\n3. I am responsible for the content/ data uploaded in the servers through WI-FI.\ \n\nIf at a later stage any information is found to be incorrect or non-compliance with the points above, it will result in the cancellation\ of WI-FI certificate.")
             flag = false
         }
+        else {
+            document.getElementById("Submit1").disabled=false;
+        }
     }
 
 </script>
@@ -125,7 +129,7 @@
     <div id="main">
         <div id="login1">
             <h2>Register</h2>
-            <form action="register.php" method="POST">
+            <form action="/PHP/register.php" method="POST">
                 <h4>Personal Details:</h4>
                 <label>Full Name: </label>
                 <input type="text" id="fname" name="fname" onkeypress="return ischar()" required id="fname">&nbsp&nbsp&nbsp&nbsp
@@ -141,7 +145,7 @@
                 <input type="text" name="nic_div">&nbsp&nbsp&nbsp&nbsp
                 <label>Location: </label>
                 <input type="text" name="nic_loc"><br><br>
-                <label>Department/Ministry (For non-NIC Officials: </label>
+                <label>Department/Ministry (For non-NIC Officials): </label>
                 <input type="text" name="nonic_dept"><br><br>
                 <label>Username: </label>
                 <input type="text" id="users" name="user" required>&nbsp&nbsp&nbsp&nbsp
@@ -157,7 +161,7 @@
                 <input type="radio" name="cat" value="trainee" id="trainee">Trainee<br><br>
                 <label>Other: </label>    
                 <input type=text name="cat" id="other"><br><br>
-                <input id="Submit" type="submit" value="Register User" onclick="checkDeclaration()">
+                <input id="Submit1" type="submit" value="Register User" disabled="true" onclick="checkDeclaration()">
             </form>
             <input type="checkbox" name="declaration" id="declaration" onchange="toggleElement(this)">I have accepted the terms and conditions.
         </div>
@@ -167,7 +171,7 @@
             <form action="#" method="post">
                 <input id="user" type="text" name="user" placeholder="Username"><br>
                 <input id="pass" type="password" name="pass" placeholder="password"><br>
-                <input id="Submit" type="submit" value="Login"><br> 
+                <input id="Submit2" type="submit" value="Login"><br> 
             </form>    
             <a href="#">Forgot password?</a>
         </div>
