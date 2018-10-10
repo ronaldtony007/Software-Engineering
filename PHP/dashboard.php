@@ -1,18 +1,15 @@
-<!--<?php
+<?php
 
-#session_start();
+session_start();
 
-#$user = $_SESSION['user'];
+$user = $_SESSION['user'];
 
-#if ($user) {
-#	echo "Welcome to Dashboard, ".$user ;
-#}
-#else {
-#	header('Location: login.html', true, 301);
-#	exit();
-#}
+if (!$user) {
+	header('Location: login.html', true, 301);
+	exit();
+}
 
-?>-->
+?>
 
 <!DOCTYPE html>
 <html>
@@ -36,13 +33,12 @@
 	        <img id="logotext" src="../Resources/NIC-txt.png" alt="NIC-logotxt">
 	    </header>
 	    <hr>
-		<!--<br><br><button onclick="myfunction()">Logout</button>-->
 		<div class="side">
 			<p id="selected"><a href="#">View Device(s)</a></p>
 			<p><a href="#">Add Device(s)</a></p>
 			<p><a href="#">Modify Device Information</a></p>
 			<p><a href="#">Remove Device(s)</a></p>
-			<p><a href="#">Logout</a></p>
+			<p><a href="logout.php">Logout</a></p>
 		</div>
 		<div class="main">
 		</div>

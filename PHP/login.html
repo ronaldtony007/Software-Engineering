@@ -20,7 +20,7 @@ if (isset($_SESSION['user'])) {
     {
          evt=(evt)? evt : window.event;
         var ch=(evt.which)? evt.which : evt.keywhich;
-        if(!((ch>=97&&ch<=122)||(ch>=65&&ch<=90)))
+        if(!((ch>=97&&ch<=122)||(ch>=65&&ch<=90) || ch == 32))
         {
             alert("Enter character only");
             return false;
@@ -115,13 +115,17 @@ if (isset($_SESSION['user'])) {
     var flag = true
 
     function toggleElement(element) {
-        if(flag) {
+        if (!element.checked) {
+            document.getElementById("Submit1").disabled=true;
+        }
+        else if(flag) {
             element.checked = !element.checked;
             alert("I hereby declare that:\n1. The information provided is correct.\n2. Will not indulge in any activity and no attempt will be made to gain\ unauthorized access to other NIC websites and facilities.\n3. I am responsible for the content/ data uploaded in the servers through WI-FI.\ \n\nIf at a later stage any information is found to be incorrect or non-compliance with the points above, it will result in the cancellation\ of WI-FI certificate.")
             flag = false
         }
         else {
             document.getElementById("Submit1").disabled=false;
+            flag = true;
         }
     }
 
