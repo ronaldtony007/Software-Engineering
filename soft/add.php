@@ -38,7 +38,7 @@ if (!$user) {
 			<p id="selected"><a href="add.php">Add Device(s)</a></p>
 			<p><a href="modify.php">Modify Device Information</a></p>
 			<p><a href="remove.php">Remove Device(s)</a></p>
-			<p><a href="logout.php">Logout</a></p>
+			<p><a href="logout.php" onclick=>Logout</a></p>
 		</div>
 		<div class="main">
 		<h1 class="heading">Add Device</h1><br>

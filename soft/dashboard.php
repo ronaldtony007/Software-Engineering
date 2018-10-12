@@ -41,6 +41,44 @@ if (!$user) {
 			<p><a href="logout.php" onclick="myfunction()">Logout</a></p>
 		</div>
 		<div class="main">
+		<table border="2" style="margin-left:25%;margin-top:50px;">
+		<tr>
+		<th>DEVICE NAME</th>
+		<th>MAC ADDRESS</th>
+		<th>OS</th>
+		<th>STATUS</th>
+		<th>FROM</th>
+		<th>TILL</th>
+		<th>PWD</th>
+		</tr>
+		<?php
+		include('connection.php');
+		$sel="select * from devices where username='$user'";
+		$conn = openConnection();
+		$row=mysqli_query($conn,$sel);
+		while($each=mysqli_fetch_array($row))
+		{
+			$device_name=$each['device_name'];
+			$mac_address=$each['mac_address'];
+			$os=$each['os'];
+			$status=$each['status'];
+			$from=$each['from_duration'];
+			$till=$each['to_duration'];
+			$password=$each['password'];
+			
+			echo "<tr>
+			<td>$device_name</td>
+			<td>$mac_address</td>
+			<td>$os</td>
+			<td>$status</td>
+			<td>$from</yd>
+			<td>$till</td>
+			<td>$password</td>
+			</tr>";
+		}
+		?>
+		
+		</table>
 		</div>
 		<hr>
 	    <footer>
