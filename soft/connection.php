@@ -3,7 +3,7 @@
 function openConnection() {	
 	$servername = "localhost";
 	$username = "root";
-	$password = "";
+	$password = "root";
 	$db = "nic";
 	
 	$conn = @mysqli_connect($servername, $username, $password);

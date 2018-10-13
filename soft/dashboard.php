@@ -69,13 +69,22 @@ if (!$user) {
 			echo "<tr>
 			<td>$device_name</td>
 			<td>$mac_address</td>
-			<td>$os</td>
-			<td>$status</td>
-			<td>$from</yd>
+			<td>$os</td>";
+			if ($status === "pending") {
+				echo "<td id='pending'>".ucfirst($status)."</td>";
+			}
+			if ($status === "approved") {
+				echo "<td id='approved'>".ucfirst($status)."</td>";
+			} 
+			if ($status === "declined") {
+				echo "<td id='declined'>".ucfirst($status)."</td>";
+			} 
+			echo "<td>$from</yd>
 			<td>$till</td>
 			<td>$password</td>
 			</tr>";
 		}
+		closeConnection($conn);
 		?>
 		
 		</table>

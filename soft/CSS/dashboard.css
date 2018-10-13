@@ -96,6 +96,21 @@ hr {
     margin-bottom: 6px;
 }
 
+#pending {
+    background-color: yellow;
+    text-align: center;
+}
+
+#approved {
+    background-color: #48f442;
+    text-align: center;
+}
+
+#declined {
+    background-color: #f44141;
+    text-align: center;
+}
+
 footer {
     margin: auto;
     color: white;
