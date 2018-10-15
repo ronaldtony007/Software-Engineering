@@ -71,13 +71,13 @@ if (!$user) {
 			<td>$mac_address</td>
 			<td>$os</td>";
 			if ($status === "pending") {
-				echo "<td id='pending'>".ucfirst($status)."</td>";
+				echo "<td><span style='color:blue'>$status</span></td>";
 			}
 			if ($status === "approved") {
-				echo "<td id='approved'>".ucfirst($status)."</td>";
+				echo "<td><span style='color:green'>$status</span></td>";
 			} 
 			if ($status === "declined") {
-				echo "<td id='declined'>".ucfirst($status)."</td>";
+				echo "<td><span style='color:red'>$status</span></td>";
 			} 
 			echo "<td>$from</yd>
 			<td>$till</td>
