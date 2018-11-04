@@ -18,13 +18,13 @@ if (!$user) {
         <link rel="icon" href="Resources/wifi.png">
         <link rel="stylesheet" href="CSS/add_client.css">
         <title>NIC WI-FI - Dashboard</title>
+		<script language="javascript">
+			function myfunction() {
+				alert('logged out successfully');
+				window.location = "logout.php"
+			}
+		</script>
 	</head>
-	<script language="javascript">
-		function myfunction() {
-			alert('logged out successfully');
-			window.location = "logout.php"
-		}
-	</script>
 	<body>
 		<header>
 	        <label id="inoc">iNOC</label>
@@ -46,13 +46,26 @@ if (!$user) {
 		<lable>Device name :</lable> <input type="text" name="dname" placeholder="Enter device name"/><br><br>
 		<lable>MAC Address :</lable> <input type="text" name="daddress" placeholder="Enter device's MAC address"/><br><br>
 		<lable>OS :</lable> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="dos" placeholder="What operating system"/><br><br>
-		<input type="submit" value="Add"/>
+		<input type="submit" value="Add" 
+		<?php
+			include_once('connection.php');
+
+			$conn = openConnection();
+
+			$query = "select * from devices where username = '".$user."'";
+			$count = mysqli_num_rows(mysqli_query($conn, $query));
+
+			if ($count == 3) {
+				echo 'disabled="true"';
+			}
+			closeConnection($conn);
+			?>/>
 		</form>
 		<hr>
 		<h1 class="heading"><u>Note</u></h1>
 		<div id="note">
 		<ul>
-		<li>Only threee devices per userID.</li>
+		<li>Only three devices per userID.</li>
 		<li>NIC VPN is required for iPhone/iPad/MAC.</li>
 		<li>Seperate form is available for requesting Certificate frro Wi-Fi Access that can be downloaded from website.</li>
 		</ul>

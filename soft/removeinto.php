@@ -13,7 +13,7 @@ $status= mysqli_query($conn,$delete);
 if($status)
 {
 	closeConnection($conn);
-	echo"<Script>alert('sucess');window.location='dashboard.php';</script>";
+	echo"<Script>alert('success');window.location='dashboard.php';</script>";
 }
 else
 {

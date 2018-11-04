@@ -16,8 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$pass = stripslashes($pass);
 	$pass = mysqli_real_escape_string($conn, sha1($pass));
 
-	echo $user, $pass;
-
 	$sql = "SELECT * FROM registration WHERE username = '".$user."' and password = '".$pass."'";
 
 	$result = mysqli_query($conn, $sql);
