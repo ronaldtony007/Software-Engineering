@@ -3,6 +3,10 @@ include ('connection.php');
 session_start();
 $conn = openConnection();
 $user = $_SESSION['user'];
+if (!$user) {
+	header('Location: login.html', true, 301);
+	exit();
+}
 $device_name=$_POST['dname'];
 $mac_address=$_POST['daddress'];
 $os=$_POST['dos'];

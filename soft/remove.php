@@ -38,16 +38,60 @@ if (!$user) {
 			<p><a href="add.php">Add Device(s)</a></p>
 			<p><a href="modify.php">Modify Device Information</a></p>
 			<p id="selected"><a href="remove.php">Remove Device(s)</a></p>
-			<p><a href="logout.php">Logout</a></p>
+			<p><a href="logout.php" onclick="myfunction()">Logout</a></p>
 		</div>
 		<div class="main">
 		<h1 class="heading">Remove Device</h1><br>
-		<form  action="#" method="post">
-		<lable>Device name :</lable> <input type="text" name="dname" placeholder="Enter device name"/><br><br>
-		<lable>MAC Address :</lable> <input type="text" name="daddress" placeholder="Enter device's MAC address"/><br><br>
-		<lable>OS :</lable> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="dos" placeholder="What operating system"/><br><br>
-		<input type="submit" value="Remove"/>
-		</form>
+		<table border="1" style="margin:auto;">
+		<tr>
+		<th>DEVICE NAME</th>
+		<th>MAC ADDRESS</th>
+		<th>OS</th>
+		<th>STATUS</th>
+		<th>FROM</th>
+		<th>TILL</th>
+		<th>PWD</th>
+		<th>DELETE</th>
+		</tr>
+		<?php
+		include('connection.php');
+		$sel="select * from devices where username='$user'";
+		$conn = openConnection();
+		$row=mysqli_query($conn,$sel);
+		while($each=mysqli_fetch_array($row))
+		{
+			$rid=$each['sno'];
+			$device_name=$each['device_name'];
+			$mac_address=$each['mac_address'];
+			$os=$each['os'];
+			$status=$each['status'];
+			$from=$each['from_duration'];
+			$till=$each['to_duration'];
+			$password=$each['password'];
+			
+			echo "<tr>
+			<td>$device_name</td>
+			<td>$mac_address</td>
+			<td>$os</td>";
+			if ($status === "pending") {
+				echo "<td><span style='color:blue'>$status</span></td>";
+			}
+			if ($status === "approved") {
+				echo "<td><span style='color:green'>$status</span></td>";
+			} 
+			if ($status === "declined") {
+				echo "<td><span style='color:red'>$status</span></td>";
+			} 
+			echo "<td>$from</yd>
+			<td>$till</td>
+			<td>$password</td>
+			<td><a href='removeinto.php?id=$rid'>Delete</a></td>'
+			</tr>";
+		}
+		closeConnection($conn);
+		?>
+		
+		</table>
 		<hr>
 		</div>
 		<hr>

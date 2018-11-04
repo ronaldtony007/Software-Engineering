@@ -3,13 +3,13 @@ include ('connection.php');
 session_start();
 $conn = openConnection();
 $user = $_SESSION['user'];
-$device_name=$_POST['dname'];
-$mac_address=$_POST['daddress'];
-$os=$_POST['dos'];
-$status="pending";
-
-$query= "insert into devices(username,device_name,mac_address,os,status,from_duration,to_duration) values('$user','$device_name','$mac_address','$os','$status',now(),'')";
-$status= mysqli_query($conn,$query);
+if (!$user) {
+	header('Location: login.html', true, 301);
+	exit();
+}
+$id=$_GET['id'];
+$delete="delete from devices where sno='$id'";
+$status= mysqli_query($conn,$delete);
 if($status)
 {
 	closeConnection($conn);

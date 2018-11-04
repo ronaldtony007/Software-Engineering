@@ -96,18 +96,6 @@ hr {
     margin-bottom: 6px;
 }
 
-#pending {
-    color: red;
-}
-
-#approved {
-    color: #48f442;
-}
-
-#declined {
-    color: #f44141;
-}
-
 footer {
     margin: auto;
     color: white;
