@@ -17,6 +17,7 @@ if (!$user) {
 		<meta charset="utf-8">
         <link rel="icon" href="Resources/wifi.png">
         <link rel="stylesheet" href="CSS/dashboard.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>NIC WI-FI - Dashboard</title>
 	</head>
 	<script language="javascript">
@@ -34,60 +35,78 @@ if (!$user) {
 	    </header>
 	    <hr>
 		<div class="side">
-			<p id="selected"><a href="dashboard.php">View Device(s)</a></p>
-			<p><a href="add.php">Add Device(s)</a></p>
-			<p><a href="modify.php">Modify Device Information</a></p>
-			<p><a href="remove.php">Remove Device(s)</a></p>
-			<p><a href="logout.php" onclick="myfunction()">Logout</a></p>
+			<img src="Resources/wifi-vector-blue.png" alt="Wifi img"/>
+			<h2>Wi-Fi Management System</h2>
+			<hr>
+			<p id="selected"><i class="fa fa-eye"></i>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="dashboard.php">View Device(s)</a></p>
+			<p><i class="fa fa-user-plus"></i>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="add.php">Add Device</a></p>
+			<p><i class="fa fa-pencil"></i>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="modify.php">Modify Device Information</a></p>
+			<p><i class="fa fa-user-times"></i>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="remove.php">Remove Device(s)</a></p>
+			<p><i class="fa fa-sign-out"></i>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="logout.php" onclick="myfunction()">Logout</a></p>
 		</div>
 		<div class="main">
-		<table border="2" style="margin-left:25%;margin-top:50px;">
-		<tr>
-		<th>DEVICE NAME</th>
-		<th>MAC ADDRESS</th>
-		<th>OS</th>
-		<th>STATUS</th>
-		<th>FROM</th>
-		<th>TILL</th>
-		<th>PWD</th>
-		</tr>
-		<?php
-		include('connection.php');
-		$sel="select * from devices where username='$user'";
-		$conn = openConnection();
-		$row=mysqli_query($conn,$sel);
-		while($each=mysqli_fetch_array($row))
-		{
-			$device_name=$each['device_name'];
-			$mac_address=$each['mac_address'];
-			$os=$each['os'];
-			$status=$each['status'];
-			$from=$each['from_duration'];
-			$till=$each['to_duration'];
-			$password=$each['password'];
+			<h2 style="float: left; padding: 20px; padding-left: 30px">Device(s) Status:</h2>
+			<h2 style="float: right; padding: 20px; padding-right: 30px">Welcome,
+			<?php
+			@include_once('connection.php');
+			$conn = openConnection();
+
+			$query = "select name from registration where username = '".$user."'";
+			$result = mysqli_fetch_array(mysqli_query($conn, $query));
+			echo $result['name'];
 			
-			echo "<tr>
-			<td>$device_name</td>
-			<td>$mac_address</td>
-			<td>$os</td>";
-			if ($status === "pending") {
-				echo "<td><span style='color:blue'>$status</span></td>";
-			}
-			if ($status === "approved") {
-				echo "<td><span style='color:green'>$status</span></td>";
-			} 
-			if ($status === "declined") {
-				echo "<td><span style='color:red'>$status</span></td>";
-			} 
-			echo "<td>$from</yd>
-			<td>$till</td>
-			<td>$password</td>
-			</tr>";
-		}
-		closeConnection($conn);
-		?>
-		
-		</table>
+			closeConnection($conn);
+			?></h2>
+			<table class="blueTable">
+				<thead>
+					<tr>
+					<th>DEVICE NAME</th>
+					<th>MAC ADDRESS</th>
+					<th>OS</th>
+					<th>STATUS</th>
+					<th>FROM</th>
+					<th>TILL</th>
+					<th>PASSWORD</th>
+				</tr>
+				</thead>
+				<tbody>
+					<?php
+					include_once('connection.php');
+					$sel="select * from devices where username='$user'";
+					$conn = openConnection();
+					$row=mysqli_query($conn,$sel);
+					while($each=mysqli_fetch_array($row))
+					{
+						$device_name=$each['device_name'];
+						$mac_address=$each['mac_address'];
+						$os=$each['os'];
+						$status=$each['status'];
+						$from=$each['from_duration'];
+						$till=$each['to_duration'];
+						$password=$each['password'];
+						
+						echo "<tr>
+						<td>$device_name</td>
+						<td>$mac_address</td>
+						<td>$os</td>";
+						if ($status === "pending") {
+							echo "<td><span style='color:blue'>".ucfirst($status)."</span></td>";
+						}
+						if ($status === "ppproved") {
+							echo "<td><span style='color:green'>".ucfirst($status)."</span></td>";
+						} 
+						if ($status === "peclined") {
+							echo "<td><span style='color:red'>".ucfirst($status)."</span></td>";
+						} 
+						echo "<td>$from</yd>
+						<td>$till</td>
+						<td>$password</td>
+						</tr>";
+					}
+					closeConnection($conn);
+				?>
+				</tbody>
+			</table>
 		</div>
 		<hr>
 	    <footer>
