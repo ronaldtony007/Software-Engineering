@@ -149,6 +149,10 @@ table.blueTable thead th:first-child {
     border-left: none;
 }
 
+.hide_text {
+    -webkit-text-security: disc;
+}
+
 footer {
     margin: auto;
     color: white;

@@ -150,6 +150,11 @@ table.blueTable thead th:first-child {
     border-left: none;
 }
 
+.hide_text {
+    -webkit-text-security: disc;
+    cursor: pointer;
+}
+
 footer {
     margin: auto;
     color: white;

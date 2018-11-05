@@ -25,6 +25,10 @@ if (!$user) {
 			alert('logged out successfully');
 			window.location = "logout.php"
 		}
+
+		function show() {
+			document.getElementById('hide_text').classList.toggle("hide_text");
+		}
 	</script>
 	<body>
 		<header>
@@ -84,6 +88,8 @@ if (!$user) {
 						$from=$each['from_duration'];
 						$till=$each['to_duration'];
 						$password=$each['password'];
+						$search = substr($password, 0, 5);
+						$password=str_replace($search, "", $password);
 						
 						echo "<tr>
 						<td>$device_name</td>
@@ -92,16 +98,16 @@ if (!$user) {
 						if ($status === "pending") {
 							echo "<td><span style='color:blue'>".ucfirst($status)."</span></td>";
 						}
-						if ($status === "ppproved") {
+						if ($status === "approved") {
 							echo "<td><span style='color:green'>".ucfirst($status)."</span></td>";
 						} 
-						if ($status === "peclined") {
-							echo "<td><span style='color:red'>".ucfirst($status)."</span></td>";
+						if ($status === "declined") {
+							echo "<td><span style='color:red'>".ucfirst($status)."	</span></td>";
 						} 
-						echo "<td>$from</yd>
-						<td>$till</td>
-						<td>$password</td>
-						</tr>";
+						echo '<td>'.$from.'</td>
+						<td>'.$till.'</td>
+						<td id="hide_text" class="hide_text" onclick="show()" style="cursor: pointer;">'.$password.'</td>
+						</tr>';
 					}
 					closeConnection($conn);
 				?>

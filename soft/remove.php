@@ -75,6 +75,9 @@ if (!$user) {
 						$from=$each['from_duration'];
 						$till=$each['to_duration'];
 						$password=$each['password'];
+						$search = substr($password, 0, 5);
+						$password=str_replace($search, "", $password);
+
 						echo "<tr>
 						<td>$device_name</td>
 						<td>$mac_address</td>
@@ -90,7 +93,7 @@ if (!$user) {
 						} 
 						echo "<td>$from</yd>
 						<td>$till</td>
-						<td>$password</td>
+						<td class='hide_text'>$password</td>
 						<td><a href='removeinto.php?id=$rid'>Delete</a></td>
 						</tr>";
 					}
