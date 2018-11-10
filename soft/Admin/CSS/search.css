@@ -108,6 +108,7 @@ hr {
     height: 500px;
     background-color: white;
     float: right;
+    font-size: 18px;
     margin-left: 3px;
     border-radius: 10px;
     margin-bottom: 6px;
@@ -121,6 +122,15 @@ hr {
     color: #ffffff;
     border-color: #ffffff;
     cursor: pointer;
+}
+
+#myInput {
+    background-repeat: no-repeat; 
+    width: 30%;
+    font-size: 14px; 
+    padding: 8px 20px 8px 20px; 
+    border: 1px solid #ddd; 
+    margin-left: 80px; 
 }
 
 table.blueTable {

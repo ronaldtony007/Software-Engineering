@@ -26,8 +26,24 @@ if (!$user) {
 			window.location = "logout.php"
 		}
 
-		function show() {
-			document.getElementById('hide_text').classList.toggle("hide_text");
+		function myFunction() {
+		    var input, filter, tbody, tr, td, i, j;
+		    input = document.getElementById('myInput');
+		    filter = input.value.toUpperCase();
+		    tbody = document.getElementById("myBody");
+		    tr = tbody.getElementsByTagName('tr');
+
+		    for (i = 0; i < tr.length; i++) {
+		        td = tr[i].getElementsByTagName("td");
+		        for (j = 0; j < td.length; j ++) {
+			        if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
+			            tr[i].style.display = "";
+			            break;
+			        } else {
+			            tr[i].style.display = "none";
+			        }
+		    	}
+		    }
 		}
 	</script>
 	<body>
@@ -63,6 +79,7 @@ if (!$user) {
 						<input type='radio' name='selection' value='registration'/> Registration&nbsp&nbsp&nbsp&nbsp&nbsp
 						<input type='radio' name='selection' value='devices' checked/> Devices&nbsp&nbsp&nbsp&nbsp&nbsp
 						<input id='submit' type='submit' value='submit'>
+						<input type='text' id='myInput' onkeyup='myFunction()' placeholder='Search..'>
 					</form>
 					<table class='blueTable'>
 						<thead>
@@ -77,7 +94,7 @@ if (!$user) {
 							<th>PASSWORD</th>
 						</tr>
 						</thead>
-						<tbody>";
+						<tbody id='myBody'>";
 							include_once('connection.php');
 							$sel="select * from devices";
 							$conn = openConnection();
@@ -133,6 +150,7 @@ if (!$user) {
 						<input type='radio' name='selection' value='registration' checked/> Registration&nbsp&nbsp&nbsp&nbsp&nbsp
 						<input type='radio' name='selection' value='devices' /> Devices&nbsp&nbsp&nbsp&nbsp&nbsp
 						<input id='submit' type='submit' value='submit'>
+						<input type='text' id='myInput' onkeyup='myFunction()' placeholder='Search..'>
 					</form>
 					<table class='blueTable2'>
 						<thead>
@@ -149,7 +167,7 @@ if (!$user) {
 							<th>USER CATEGORY</th>
 						</tr>
 						</thead>
-						</tbody>";
+						<tbody id='myBody'>";
 						include_once('connection.php');
 							$sel="select * from registration";
 							$conn = openConnection();
