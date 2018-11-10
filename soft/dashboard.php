@@ -87,27 +87,39 @@ if (!$user) {
 						$status=$each['status'];
 						$from=$each['from_duration'];
 						$till=$each['to_duration'];
-						$password=$each['password'];
-						$search = substr($password, 0, 5);
-						$password=str_replace($search, "", $password);
 						
 						echo "<tr>
 						<td>$device_name</td>
 						<td>$mac_address</td>
 						<td>$os</td>";
 						if ($status === "pending") {
+							$password=$each['password'];
+							$search = substr($password, 0, 5);
+							$password=str_replace($search, "", $password);
 							echo "<td><span style='color:blue'>".ucfirst($status)."</span></td>";
+							echo '<td>'.$from.'</td>
+							<td>'.$till.'</td>
+							<td id="hide_text" class="hide_text" onclick="show()" style="cursor: pointer;">'.$password.'</td>
+							</tr>';
 						}
 						if ($status === "approved") {
+							$password=$each['password'];
+							$search = substr($password, 0, 5);
+							$password=str_replace($search, "", $password);
 							echo "<td><span style='color:green'>".ucfirst($status)."</span></td>";
+							echo '<td>'.$from.'</td>
+							<td>'.$till.'</td>
+							<td id="hide_text" class="hide_text" onclick="show()" style="cursor: pointer;">'.$password.'</td>
+							</tr>';
 						} 
 						if ($status === "declined") {
+							$password=$each['password'];
 							echo "<td><span style='color:red'>".ucfirst($status)."	</span></td>";
+							echo '<td>'.$from.'</td>
+							<td>'.$till.'</td>
+							<td>'.$password.'</td>
+							</tr>';
 						} 
-						echo '<td>'.$from.'</td>
-						<td>'.$till.'</td>
-						<td id="hide_text" class="hide_text" onclick="show()" style="cursor: pointer;">'.$password.'</td>
-						</tr>';
 					}
 					closeConnection($conn);
 				?>

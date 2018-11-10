@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 $user = $_SESSION['user'];
@@ -74,28 +73,42 @@ if (!$user) {
 						$status=$each['status'];
 						$from=$each['from_duration'];
 						$till=$each['to_duration'];
-						$password=$each['password'];
-						$search = substr($password, 0, 5);
-						$password=str_replace($search, "", $password);
 
 						echo "<tr>
 						<td>$device_name</td>
 						<td>$mac_address</td>
 						<td>$os</td>";
 						if ($status === "pending") {
+							$password=$each['password'];
+							$search = substr($password, 0, 5);
+							$password=str_replace($search, "", $password);
 							echo "<td><span style='color:blue'>".ucfirst($status)."</span></td>";
+							echo "<td>$from</yd>
+							<td>$till</td>
+							<td class='hide_text'>$password</td>
+							<td><a href='removeinto.php?id=$rid'>Delete</a></td>
+							</tr>";
 						}
 						if ($status === "approved") {
+							$password=$each['password'];
+							$search = substr($password, 0, 5);
+							$password=str_replace($search, "", $password);
 							echo "<td><span style='color:green'>".ucfirst($status)."</span></td>";
+							echo "<td>$from</yd>
+							<td>$till</td>
+							<td class='hide_text'>$password</td>
+							<td><a href='removeinto.php?id=$rid'>Delete</a></td>
+							</tr>";
 						} 
 						if ($status === "declined") {
+							$password=$each['password'];
 							echo "<td><span style='color:red'>".ucfirst($status)."</span></td>";
+							echo "<td>$from</yd>
+							<td>$till</td>
+							<td>$password</td>
+							<td><a href='removeinto.php?id=$rid'>Delete</a></td>
+							</tr>";
 						} 
-						echo "<td>$from</yd>
-						<td>$till</td>
-						<td class='hide_text'>$password</td>
-						<td><a href='removeinto.php?id=$rid'>Delete</a></td>
-						</tr>";
 					}
 					closeConnection($conn);
 				?>

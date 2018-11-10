@@ -25,10 +25,6 @@ if (!$user) {
 			alert('logged out successfully');
 			window.location = "logout.php"
 		}
-
-		function show() {
-			document.getElementById('hide_text').classList.toggle("hide_text");
-		}
 	</script>
 	<body>
 		<header>
@@ -43,9 +39,8 @@ if (!$user) {
 			<h2>Wi-Fi Management System</h2>
 			<hr>
 			<p id="selected"><i class="fa fa-eye"></i>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="dashboard.php">View Device(s)</a></p>
-			<p><i class="fa fa-user-plus"></i>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="add.php">Add Device</a></p>
-			<p><i class="fa fa-pencil"></i>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="modify.php">Modify Device Information</a></p>
-			<p><i class="fa fa-user-times"></i>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="remove.php">Remove Device(s)</a></p>
+			<p><i class="fa fa-search" aria-hidden="true"></i>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="search.php">Search</a></p>
+			<p><i class="fa fa-user-times"></i>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="remove.php">Remove User(s)</a></p>
 			<p><i class="fa fa-sign-out"></i>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="logout.php" onclick="myfunction()">Logout</a></p>
 		</div>
 		<div class="main">
@@ -54,34 +49,35 @@ if (!$user) {
 			<table class="blueTable">
 				<thead>
 					<tr>
-					<th>DEVICE NAME</th>
-					<th>MAC ADDRESS</th>
-					<th>OS</th>
-					<th>STATUS</th>
-					<th>FROM</th>
-					<th>TILL</th>
-					<th>PASSWORD</th>
-				</tr>
+						<th>NAME</th>
+						<th>DEVICE NAME</th>
+						<th>MAC ADDRESS</th>
+						<th>OS</th>
+						<th>STATUS</th>
+						<th>APPLIED ON</th>
+						<th>APPROVE</th>
+					</tr>
 				</thead>
 				<tbody>
 					<?php
 					include_once('connection.php');
-					$sel="select * from devices where username='$user'";
+					$sel="select * from devices where status='pending'";
 					$conn = openConnection();
 					$row=mysqli_query($conn,$sel);
 					while($each=mysqli_fetch_array($row))
 					{
+						$sel="select name from registration where username='".$each['username']."'";
+						$row2=mysqli_query($conn, $sel);
+						$name=mysqli_fetch_array($row2)['name'];
+						$rid=$each['sno'];
 						$device_name=$each['device_name'];
 						$mac_address=$each['mac_address'];
 						$os=$each['os'];
 						$status=$each['status'];
 						$from=$each['from_duration'];
-						$till=$each['to_duration'];
-						$password=$each['password'];
-						$search = substr($password, 0, 5);
-						$password=str_replace($search, "", $password);
 						
 						echo "<tr>
+						<td>$name</td>
 						<td>$device_name</td>
 						<td>$mac_address</td>
 						<td>$os</td>";
@@ -95,8 +91,7 @@ if (!$user) {
 							echo "<td><span style='color:red'>".ucfirst($status)."	</span></td>";
 						} 
 						echo '<td>'.$from.'</td>
-						<td>'.$till.'</td>
-						<td id="hide_text" class="hide_text" onclick="show()" style="cursor: pointer;">'.$password.'</td>
+						<td><a id="approved" href="approve.php?id='.$rid.'">Yes</a> / <a id="declined" href="decline.php?id='.$rid.'">No</a></td>
 						</tr>';
 					}
 					closeConnection($conn);

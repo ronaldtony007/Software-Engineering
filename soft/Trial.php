@@ -7,4 +7,4 @@
  * By allowing your storage to expand past 60 characters (255 would be good)
  */
 echo password_hash("Administrator", PASSWORD_DEFAULT);
-?>
+?

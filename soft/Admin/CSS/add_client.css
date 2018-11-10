@@ -81,10 +81,6 @@ hr {
     font-size: 19px;
 }
 
-.side a:visited {
-    color: -webkit-link;
-}
-
 .side p:hover {
     background-color: rgba(0,0,0,0.5);
     border-radius: 15px;

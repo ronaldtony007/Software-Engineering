@@ -84,19 +84,36 @@ if (!$user) {
 						<td>$mac_address</td>
 						<td>$os</td>";
 						if ($status === "pending") {
+							$password=$each['password'];
+							$search = substr($password, 0, 5);
+							$password=str_replace($search, "", $password);
 							echo "<td><span style='color:blue'>".ucfirst($status)."</span></td>";
+							echo "<td>$from</yd>
+							<td>$till</td>
+							<td class='hide_text'>$password</td>
+							<td><a href='modifyinto.php?id=$rid'>Modify</a></td>
+							</tr>";
 						}
 						if ($status === "approved") {
+							$password=$each['password'];
+							$search = substr($password, 0, 5);
+							$password=str_replace($search, "", $password);
 							echo "<td><span style='color:green'>".ucfirst($status)."</span></td>";
+							echo "<td>$from</yd>
+							<td>$till</td>
+							<td class='hide_text'>$password</td>
+							<td><a href='modifyinto.php?id=$rid'>Modify</a></td>
+							</tr>";
 						} 
 						if ($status === "declined") {
+							$password=$each['password'];
 							echo "<td><span style='color:red'>".ucfirst($status)."</span></td>";
+							echo "<td>$from</yd>
+							<td>$till</td>
+							<td>$password</td>
+							<td><a href='modifyinto.php?id=$rid'>Modify</a></td>
+							</tr>";
 						} 
-						echo "<td>$from</yd>
-						<td>$till</td>
-						<td class='hide_text'>$password</td>
-						<td><a href='modifyinto.php?id=$rid'>Modify</a></td>
-						</tr>";
 					}
 					closeConnection($conn);
 				?>
