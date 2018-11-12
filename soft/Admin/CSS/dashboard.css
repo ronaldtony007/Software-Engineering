@@ -95,6 +95,10 @@ hr {
     border-radius: 15px;
 }
 
+.side a:visited {
+    color: -webkit-link;
+}
+
 .side p {
     padding-left: 45px;
     padding-top: 5px;
